@@ -26,7 +26,7 @@
                 android:layout_centerInParent="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/Android_Logo"
+                android:src="@drawable/logo"
                 android:id="@+id/iconeApp"
                 />
 
@@ -40,9 +40,8 @@
                 android:text="Confirmation"
                 android:textColor="#ffffff"
                 android:background="#4f4f4f"
-                android:id="@+id/boutonConfirmation"
-                <!-- android:fontFamily="@font/Lato-Regular" -->
-                />
+                android:id="@+id/boutonConfirmation"/>
+
 
             <EditText
                 android:layout_width="130dp"
