@@ -12,16 +12,9 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="371dp"
-        android:layout_height="253dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="center"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        card_view:cardCornerRadius="2000dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,36 +23,37 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/image"
-                android:id="@+id/image"
-                />
-
-
-            <TextView
-                android:layout_width="236dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
-                android:layout_marginTop="10dp"
-                android:text=""
-                android:id="@+id/text"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/Android_Logo"
+                android:id="@+id/iconeApp"
                 />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text"
-                android:layout_alignLeft="@id/text"
+                android:layout_below="@+id/iconeApp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
                 android:text="Confirmation"
-
+                android:textColor="#ffffff"
+                android:background="#4f4f4f"
+                android:id="@+id/boutonConfirmation"
+                <!-- android:fontFamily="@font/Lato-Regular" -->
                 />
 
-
+            <EditText
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iconeApp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/boutonConfirmation"
+                android:layout_marginLeft="20dp"
+                />
 
         </RelativeLayout>
-
 
     </androidx.cardview.widget.CardView>
 

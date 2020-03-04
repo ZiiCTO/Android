@@ -11,12 +11,16 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="60dp"
+            android:layout_below="@+id/toolbar"
+            android:gravity="center"
+            android:background="#4f4f4f"
+            android:textSize="20sp"
+            android:text="MyContact"
+            android:textColor="#ffffff"
+            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
