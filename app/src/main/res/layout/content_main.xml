@@ -10,50 +10,63 @@
     tools:showIn="@layout/activity_main">
 
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/logo"
-                android:id="@+id/iconeApp"
-                />
-
-            <Button
-                android:layout_width="130dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iconeApp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Confirmation"
-                android:textColor="#ffffff"
-                android:background="#4f4f4f"
-                android:id="@+id/boutonConfirmation"/>
+                android:id="@+id/cardView"
+                android:layout_marginTop="150dp"
+                android:layout_centerHorizontal="true">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iconeApp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginVertical="10dp"
+                        android:src="@drawable/android_logo2"/>
+
+                    <ImageView
+                        android:id="@+id/nameApp"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@id/iconeApp"
+                        android:src="@drawable/android_nom"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <EditText
-                android:layout_width="130dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iconeApp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignTop="@+id/boutonConfirmation"
-                android:layout_marginLeft="20dp"
-                />
+                android:layout_below="@+id/cardView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:inputType="text"
+                android:hint="Saisir votre nom"
+                android:id="@+id/name"/>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Confirmation"
+                android:textColor="#ffffff"
+                android:background="@drawable/gradients"
+                android:id="@+id/boutonConfirmation"
+                android:onClick="secondActivity"/>
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -2,27 +2,22 @@ package dibenedetto.valentin.tp;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
+public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_second);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,18 +29,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                         .setAction("Action", null).show();
             }
         });
-
-
-        Button button = findViewById(R.id.boutonConfirmation);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText tp = findViewById(R.id.name);
-                String name = tp.getText().toString();
-                System.out.println(name);
-            }
-        });
-
     }
 
     @Override
@@ -70,14 +53,5 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
-    
-    public void secondActivity(View view){
-        startActivity(new Intent(this, SecondActivity.class));
-    }
-/*
-    @Override
-    public void onClick(View v) {
-        String name = tp.getText().toString();
-        System.out.println(name);
-    }*/
+
 }
