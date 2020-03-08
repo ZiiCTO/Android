@@ -3,26 +3,26 @@ package dibenedetto.valentin.tp;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
+public class MainActivity extends AppCompatActivity {
+    final String nameUser = "user_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,17 +34,46 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                         .setAction("Action", null).show();
             }
         });
+        */
 
 
+        /** Je localise mon EditText en fonction de son id **/
+        final EditText name = findViewById(R.id.name);
+
+        /** Pareil pour le bouton **/
         Button button = findViewById(R.id.boutonConfirmation);
+
+        /** Je crée une action sur le bouton récupéré **/
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                EditText tp = findViewById(R.id.name);
-                String name = tp.getText().toString();
-                System.out.println(name);
+
+                if (!name.getText().toString().isEmpty()) {
+                    /** Je passe de la MainActivity à SecondActivity ... **/
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+                    /** ... en transférant la valeur rentrée par l'utilisateur dans l'EditText ... **/
+                    intent.putExtra(nameUser, name.getText().toString());
+
+                    /** ... et je démarre la SecondActivity **/
+                    startActivity(intent);
+                }
             }
         });
+
+        /** Création du Toast **/
+        View layout = getLayoutInflater().inflate(R.layout.custom_toast,
+                (ViewGroup) findViewById(R.id.custom_toast_container));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Bonjour !");
+
+        Toast toast =new Toast(getApplicationContext());
+        //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
 
     }
 
@@ -80,4 +109,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         String name = tp.getText().toString();
         System.out.println(name);
     }*/
+
+    //https://www.youtube.com/watch?v=dBCOhaEsiiU
 }
