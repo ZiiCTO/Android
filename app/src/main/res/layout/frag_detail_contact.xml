@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorText"
     android:orientation="horizontal"
-    tools:context="dibenedetto.valentin.tp.fragments.FragmentFav">
+    tools:context="dibenedetto.valentin.tp.fragments.FragmentDetailContact">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_fav"
+        android:id="@+id/recycler_detail_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

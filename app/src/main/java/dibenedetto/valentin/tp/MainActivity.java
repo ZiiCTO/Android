@@ -15,26 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    final String nameUser = "user_name";
+    private final String NAME_USER = "user_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
 
 
         /** Je localise mon EditText en fonction de son id **/
@@ -54,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 
                     /** ... en transférant la valeur rentrée par l'utilisateur dans l'EditText ... **/
-                    intent.putExtra(nameUser, name.getText().toString());
+                    intent.putExtra(NAME_USER, name.getText().toString());
 
                     /** ... et je démarre la SecondActivity **/
                     startActivity(intent);
@@ -98,17 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    
-    public void secondActivity(View view){
-        startActivity(new Intent(this, SecondActivity.class));
-    }
-/*
-    @Override
-    public void onClick(View v) {
-        String name = tp.getText().toString();
-        System.out.println(name);
-    }*/
 
     //https://www.youtube.com/watch?v=dBCOhaEsiiU
 }
