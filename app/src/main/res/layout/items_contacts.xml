@@ -5,13 +5,15 @@
     android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/gradients">
 
     <ImageView
         android:id="@+id/contact_img"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:background="@drawable/img_contact_2"
+        android:background="@drawable/img_contact_3"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"/>
 
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Nom"
             android:textAllCaps="true"
-            android:textColor="@color/colorText2"
+            android:textColor="@color/colorText"
             android:textSize="14sp"/>
 
         <TextView
@@ -38,18 +40,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Prénom"
-            android:textColor="@color/colorText2"
+            android:textColor="@color/colorText"
             android:textSize="14sp"/>
     </LinearLayout>
 
+    <!--
     <ImageView
         android:id="@+id/contact_fav_ic"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:background="@drawable/ic_star_24dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true" />
+        -->
+
+    <Button
+        android:id="@+id/button_fav_ic"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ic_star_24dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:onClick="setFav"/>
+
+
 
 </RelativeLayout>
 

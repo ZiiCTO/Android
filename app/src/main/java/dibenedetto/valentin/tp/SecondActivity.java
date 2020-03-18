@@ -1,20 +1,25 @@
 package dibenedetto.valentin.tp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.material.tabs.TabLayout;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import dibenedetto.valentin.tp.adapters.ViewPagerAdapter;
 import dibenedetto.valentin.tp.fragments.FragmentContact;
@@ -27,12 +32,14 @@ public class SecondActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<Contact> listContact = new ArrayList<>();
+    private List<Contact> listFav = new ArrayList<>();
     private final int[] ICONS = {R.drawable.ic_group_white_24dp, R.drawable.ic_star_white_24dp, R.drawable.ic_contact_phone_white_24dp};
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("########### COUCOU ###########");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
@@ -57,6 +64,7 @@ public class SecondActivity extends AppCompatActivity {
         toast.show();
 
         initData();
+        trieData();
 
         viewPager = findViewById(R.id.view_pager);
         setupViewPager(viewPager);
@@ -67,6 +75,7 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             tab.setIcon(ICONS[i]);
+            tab.getIcon().setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_IN);
         }
 
     }
@@ -78,15 +87,17 @@ public class SecondActivity extends AppCompatActivity {
         fragmentContact.setListContact(listContact);
 
         FragmentDetailContact fragmentDetailContact = new FragmentDetailContact();
-        fragmentDetailContact.setListContact(listContact);
+        //fragmentDetailContact.setListContact(listContact);
 
         FragmentFav fragmentFav = new FragmentFav();
-        fragmentFav.setListContact(listContact);
+        //fragmentFav.setListContact(listContact);
 
         adapter.addItem(fragmentContact, "Contacts");
         adapter.addItem(fragmentFav, "Favoris");
         adapter.addItem(fragmentDetailContact, "Détails");
         viewPager.setAdapter(adapter);
+
+
     }
 
     @Override
@@ -125,36 +136,75 @@ public class SecondActivity extends AppCompatActivity {
 
 
     private void initData() {
-        Contact contact = new Contact("Gauser", "Aifekan", 0100000000, "prenom1@gmail.com", "ville1");
+        Contact contact = new Contact("Gocer", "Efekan", 0100000000, "efekan@gmail.com", "Quiévrechain");
         listContact.add(contact);
 
-        contact = new Contact("Massnain", "Tib",0200000000, "prenom2@gmail.com", "ville2");
+        contact = new Contact("Masnin", "Thibaut",0200000000, "thibaut@gmail.com", "Hellemmes");
         listContact.add(contact);
 
-        contact = new Contact("Bjart", "Kvin",0300000000, "prenom3@gmail.com", "ville3");
+        contact = new Contact("Bajard", "Kévin",0300000000, "kevin@gmail.com", "Crespin");
         listContact.add(contact);
 
-        contact = new Contact("Suslek", "Aymeric",0400000000, "prenom4@gmail.com", "ville4");
+        contact = new Contact("Sulek", "Aymeric",0400000000, "aymeric@gmail.com", "Maubeuge");
         listContact.add(contact);
 
-        contact = new Contact("Hène", "Alex", 0500000000, "prenom5@gmail.com", "ville5");
+        contact = new Contact("Haine", "Alexis", 0500000000, "alexis@gmail.com", "Maubeuge");
         listContact.add(contact);
 
-        contact = new Contact("test6", "prenom6", 0600000000, "prenom6@gmail.com", "ville6");
+        contact = new Contact("Egret", "Guillaume", 0600000000, "guillaume@gmail.com", "Maubeuge");
         listContact.add(contact);
 
-        contact = new Contact("test7", "prenom7", 0700000000, "prenom7@gmail.com", "ville7");
+        contact = new Contact("Lequeux", "Maxence", 0700000000, "maxence@gmail.com", "Maubeuge");
         listContact.add(contact);
 
-        contact = new Contact("test8", "prenom8", 00000001, "prenom8@gmail.com", "ville8");
+        contact = new Contact("Deboosère", "Amine", 00000001, "amine@gmail.com", "Roubaix");
         listContact.add(contact);
 
-        contact = new Contact("test9", "prenom9", 000000002, "prenom9@gmail.com", "ville9");
+        contact = new Contact("Dupont", "Jean", 000000002, "jean@gmail.com", "Valenciennes");
         listContact.add(contact);
 
-        contact = new Contact("test10", "prenom10", 1000000000, "prenom10@gmail.com", "ville10");
+        contact = new Contact("Pons", "Alex", 1000000000, "alex0@gmail.com", "Sebourg");
         listContact.add(contact);
 
     }
+
+    public List<Contact> trieData() {
+        Contact[] listTemp = new Contact[listContact.size()];
+
+        for (int i = 0 ; i < listContact.size(); i++){
+            listTemp[i] = listContact.get(i);
+        }
+
+        Comparator comp = new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Contact c1 = (Contact) o1;
+                Contact c2 = (Contact) o2;
+                return c1.getNom().compareToIgnoreCase(c2.getNom());
+            }
+        };
+
+        Arrays.sort(listTemp, comp);
+
+        for (int j = 0 ; j < listTemp.length ; j++){
+            listContact.set(j, listTemp[j]);
+        }
+
+        return listContact;
+    }
+
+    public void setFav() {
+        final Button b = (Button) findViewById(R.id.button_fav_ic);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable dr = getResources().getDrawable(R.drawable.ic_star_fav_24dp);
+                b.setBackground(dr);
+            }
+        });
+
+
+    }
+
 
 }

@@ -6,7 +6,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity">
+    tools:context=".SecondActivity"
+    android:background="@color/colorText">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -22,7 +23,7 @@
             android:textAllCaps="true"
             android:gravity="center"
             android:textSize="25sp"
-            android:text="MyContact"
+            android:text="MyContacts"
             android:textColor="@color/colorText"
             android:textStyle="bold"/>
 
