@@ -17,7 +17,7 @@ import dibenedetto.valentin.tp.R;
 import dibenedetto.valentin.tp.models.Contact;
 import dibenedetto.valentin.tp.views.ViewHolderContact;
 
-public class ContactAdapter extends RecyclerView.Adapter<ViewHolderContact> {
+public class ContactAdapter extends RecyclerView.Adapter<ViewHolderContact>  {
     private LayoutInflater layoutInflater;
     private Context context;
     private List<Contact> listContact;
@@ -44,16 +44,26 @@ public class ContactAdapter extends RecyclerView.Adapter<ViewHolderContact> {
     public void onBindViewHolder(@NonNull ViewHolderContact holder, int position) {
 
         TextView nom, prenom;
+        ImageView fav;
 
         nom = holder.nom;
         prenom = holder.prenom;
+        fav = holder.fav;
 
         nom.setText(listContact.get(position).getNom());
         prenom.setText(listContact.get(position).getPrenom());
+
+        if (!listContact.get(position).getFav()){
+            fav.setImageResource(R.drawable.ic_star_24dp);
+        } else {
+            fav.setImageResource(R.drawable.ic_star_fav_24dp);
+        }
+
     }
 
     @Override
     public int getItemCount() {
         return listContact.size();
     }
+
 }

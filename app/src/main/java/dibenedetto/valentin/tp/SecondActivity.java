@@ -2,9 +2,12 @@ package dibenedetto.valentin.tp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,19 +37,21 @@ public class SecondActivity extends AppCompatActivity {
     private List<Contact> listContact = new ArrayList<>();
     private List<Contact> listFav = new ArrayList<>();
     private final int[] ICONS = {R.drawable.ic_group_white_24dp, R.drawable.ic_star_white_24dp, R.drawable.ic_contact_phone_white_24dp};
-
+    SharedPreferences sharedPreferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("########### COUCOU ###########");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
 
         /** Récupérer les infos de la main activity **/
-        Intent intent = getIntent();
-        String name = intent.getStringExtra(NAME_USER);
+//        Intent intent = getIntent();
+//        String name = intent.getStringExtra(NAME_USER);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String name = sharedPreferences.getString("NOM", "" );
 
         //TextView textView = findViewById(R.id.nameUser);
         //textView.setText(intent.getStringExtra(NAME_USER));
@@ -56,7 +61,7 @@ public class SecondActivity extends AppCompatActivity {
                 (ViewGroup) findViewById(R.id.custom_toast_container));
 
         TextView text = (TextView) layout.findViewById(R.id.text);
-        text.setText("Hello " + intent.getStringExtra(NAME_USER) + " !");
+        text.setText("Hello " + name + " !");
 
         Toast toast = new Toast(getApplicationContext());
         toast.setDuration(Toast.LENGTH_LONG);
@@ -192,19 +197,16 @@ public class SecondActivity extends AppCompatActivity {
         return listContact;
     }
 
-    public void setFav() {
-        final Button b = (Button) findViewById(R.id.button_fav_ic);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Drawable dr = getResources().getDrawable(R.drawable.ic_star_fav_24dp);
-                b.setBackground(dr);
-            }
-        });
-
-
-    }
-
+//    public void setFav() {
+//        final Button b = (Button) findViewById(R.id.button_fav_ic);
+//
+//        b.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Drawable dr = getResources().getDrawable(R.drawable.ic_star_fav_24dp);
+//                b.setBackground(dr);
+//            }
+//        });
+//    }
 
 }

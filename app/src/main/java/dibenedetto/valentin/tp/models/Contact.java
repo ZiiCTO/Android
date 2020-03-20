@@ -17,6 +17,7 @@ public class Contact {
         this.tel = tel;
         this.mail = mail;
         this.ville = ville;
+        this.isFav = false;
     }
 
     public Contact(Icon image, String nom, String prenom, int tel, String mail, String ville, boolean isFav) {
