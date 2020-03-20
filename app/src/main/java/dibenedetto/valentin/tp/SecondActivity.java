@@ -13,10 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.lang.reflect.Array;
@@ -31,7 +35,12 @@ import dibenedetto.valentin.tp.fragments.FragmentFav;
 import dibenedetto.valentin.tp.models.Contact;
 
 public class SecondActivity extends AppCompatActivity {
-    private final String NAME_USER = "user_name";
+    //private final String NAME_USER = "user_name";
+    private final String LASTNAME_USER = "user_lastname";
+    private final String FIRSTNAME_USER = "user_firstname";
+    private final String EMAIL_USER = "user_email";
+    private final String MOBILE_USER = "user_mobile";
+    private final String CITY_USER = "user_city";
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<Contact> listContact = new ArrayList<>();
@@ -45,6 +54,17 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        /** Pas fonctionnel **/
+//        /**Récupérer les infos de la third activity **/
+//        Intent intent = getIntent();
+//        String lastname = intent.getStringExtra(LASTNAME_USER);
+//        String firstname = intent.getStringExtra(FIRSTNAME_USER);
+//        String email = intent.getStringExtra(EMAIL_USER);
+//        String mobile = intent.getStringExtra(MOBILE_USER);
+//        String city = intent.getStringExtra(CITY_USER);
+//
+//        listContact.add(new Contact(lastname, firstname, Integer.parseInt(mobile) ,email, city));
+
 
         /** Récupérer les infos de la main activity **/
 //        Intent intent = getIntent();
@@ -55,6 +75,18 @@ public class SecondActivity extends AppCompatActivity {
 
         //TextView textView = findViewById(R.id.nameUser);
         //textView.setText(intent.getStringExtra(NAME_USER));
+
+        /** Création du FAB **/
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Snackbar.make(v, "Replacewith your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
 
         /** Création du Toast **/
         View layout = getLayoutInflater().inflate(R.layout.custom_toast,
@@ -77,6 +109,7 @@ public class SecondActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
+        /** Icone pour la Tablayout **/
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             tab.setIcon(ICONS[i]);
@@ -85,6 +118,7 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
+    /** Initialisation du ViewPager **/
     private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -128,18 +162,7 @@ public class SecondActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*
-    public boolean updateSearchView(SearchView searchView){
-        searchView = findViewById(R.id.search);
-        ImageView imageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon);
-        imageView.setColorFilter(getResources().getColor(R.color.colorText2), PorterDuff.Mode.SRC_IN);
-
-        return true;
-    }
-    */
-
-
-
+    /** Initialisation des contacts **/
     private void initData() {
         Contact contact = new Contact("Gocer", "Efekan", 0100000000, "efekan@gmail.com", "Quiévrechain");
         listContact.add(contact);
@@ -170,9 +193,9 @@ public class SecondActivity extends AppCompatActivity {
 
         contact = new Contact("Pons", "Alex", 1000000000, "alex0@gmail.com", "Sebourg");
         listContact.add(contact);
-
     }
 
+    /**Trie par ordre alphabétique des contacts **/
     public List<Contact> trieData() {
         Contact[] listTemp = new Contact[listContact.size()];
 
@@ -196,17 +219,4 @@ public class SecondActivity extends AppCompatActivity {
 
         return listContact;
     }
-
-//    public void setFav() {
-//        final Button b = (Button) findViewById(R.id.button_fav_ic);
-//
-//        b.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Drawable dr = getResources().getDrawable(R.drawable.ic_star_fav_24dp);
-//                b.setBackground(dr);
-//            }
-//        });
-//    }
-
 }

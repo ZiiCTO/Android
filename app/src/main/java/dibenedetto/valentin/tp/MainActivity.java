@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        /** Si la clé de référence NOM n'est pas vide alors je passe directement à la second activity **/
         if (sharedPreferences.contains("NOM")) {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
@@ -102,12 +103,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //https://www.youtube.com/watch?v=dBCOhaEsiiU
-
-
+    /** Clear les préférences **/
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        /** A décommenter pour cler les préférences et revenir sur l'écran de connexion **/
         //sharedPreferences.edit().clear().commit();
     }
 }

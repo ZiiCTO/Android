@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:verticalScrollbarPosition="defaultPosition"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradients"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/nameApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="MyContacts"
+            android:textColor="@color/colorText"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/cr_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/cr_et_nom"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cr_nom"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/cr_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_below="@id/cr_nom"/>
+
+        <EditText
+            android:id="@+id/cr_et_prenom"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/cr_nom"
+            android:layout_below="@id/cr_nom"/>
+
+        <TextView
+            android:id="@+id/cr_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mail :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/cr_prenom"
+            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/cr_et_mail"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/cr_nom"
+            android:layout_below="@id/cr_prenom"/>
+
+        <TextView
+            android:id="@+id/cr_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/cr_mail"
+            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/cr_et_mobile"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/cr_nom"
+            android:layout_below="@id/cr_mail"/>
+
+        <TextView
+            android:id="@+id/cr_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ville :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/cr_mobile"
+            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/cr_et_ville"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/cr_nom"
+            android:layout_below="@id/cr_mobile"/>
+
+        <TextView
+            android:id="@+id/cr_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ville :"
+            android:textColor="@color/colorText2"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/cr_ville"
+            android:layout_marginBottom="50dp"/>
+
+        <CheckBox
+            android:id="@+id/cr_cb_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cr_ville"
+            android:layout_toRightOf="@id/cr_nom"/>
+
+        <Button
+            android:id="@+id/b_cr_confirm"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Confirmation"
+            android:textColor="@color/colorText"
+            android:background="@drawable/rounded_button"
+            android:layout_below="@+id/cr_fav"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
